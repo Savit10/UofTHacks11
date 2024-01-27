@@ -8,10 +8,10 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="{{ url_for('index2') }}">Spongebob</a>
-        <a href="{{ url_for('index3') }}">Sandy</a>
-        <a href="{{ url_for('index4') }}">Patricks</a>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('spongebob')}}">Spongebob</a>
+        <a href="{{ url_for('sandy')}}">Sandy</a>
+        <a href="{{ url_for('patricks')}}">Patricks</a>
       </nav>
     <main>
         <div class="introduction">
@@ -25,18 +25,18 @@
     </main>
 
     <button class = "spongebob-button">
-        <a href = "spongebob.html"><img class = "spongebob-img" src = "spongebob.jpeg"></a>
-        <a href = "spongebob.html"><p class="spongebob-button-text"> Talk to "SPONGEBOB SQUAREPANTS"</p></a>
+        <a href = "{{ url_for('spongebob')}}"><img class = "spongebob-img" src = "{{ url_for('static', filename='spongebob.jpeg') }}"></a>
+        <a href = "{{ url_for('spongebob')}}"><p class="spongebob-button-text"> Talk to "SPONGEBOB SQUAREPANTS"</p></a>
     </button>
 
     <button class = "sandy-button">
-        <a href = "sandy.html"> <img class = "spongebob-img" src = "sandy.jpeg"> </a>
-        <a href = "sandy.html"> <p class="spongebob-button-text"> Talk to Sandy</p></a>
+        <a href = "{{ url_for('sandy')}}"> <img class = "spongebob-img" src = "{{ url_for('static', filename='sandy.jpeg') }}"> </a>
+        <a href = "{{ url_for('sandy')}}"> <p class="spongebob-button-text"> Talk to Sandy</p></a>
     </button>
 
     <button class = "patricks-button">
-        <a href = "patricks.html"> <img class = "spongebob-img" src = "patricks.jpeg"> </a>
-        <a href = "patricks.html"> <p class="spongebob-button-text"> Talk to Patricks</p></a>
+        <a href = "{{ url_for('patricks')}}"> <img class = "spongebob-img" src = "{{ url_for('static', filename='patricks.jpeg') }}"> </a>
+        <a href = "{{ url_for('patricks')}}"> <p class="spongebob-button-text"> Talk to Patricks</p></a>
     </button>
 </body>
 </html>

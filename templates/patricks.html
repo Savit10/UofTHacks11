@@ -8,16 +8,16 @@
 </head>
 <body>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="spongebob.html">SpongeBob</a>
-        <a href="sandy.html">Sandy</a>
-        <a href="patricks.html">Patricks</a>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('spongebob')}}">Spongebob</a>
+        <a href="{{ url_for('sandy')}}">Sandy</a>
+        <a href="{{ url_for('patricks')}}">Patricks</a>
       </nav>
     <main>
         <div class="main-div">
             <div class="container">
                 <div class="top-part">
-                    <img src= "patricks.jpeg" alt="Spongebob">
+                    <img class = "spongebob-img" src = "{{ url_for('static', filename='patricks.jpeg') }}">
                     <h3> Patricks</h3>
                     <div class="agent-text"></div>
                     <p> Agent <soan>(Online)</soan></p>
