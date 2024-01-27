@@ -116,3 +116,11 @@ body {
 .input-form {
     color: #0f0f20;
 }
+
+.user-input {
+    color: #0f0f20;
+}
+
+#user-input {
+    color: #0f0f20;
+}

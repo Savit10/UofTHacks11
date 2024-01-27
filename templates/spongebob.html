@@ -25,6 +25,7 @@
             <form class="input-form">
                 <label for="user-input">Enter your question here: </label><input type="text" id="user-input" name="user-input"><br>
             </form>
+            {% if output %} <p>{{ output }}</p> {% endif %}
         </div>
     </main>
 </body>
