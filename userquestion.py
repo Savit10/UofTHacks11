@@ -18,7 +18,7 @@ def newinputoutput():
        input = request.form.get("user-input") 
        output.append(input, input)
        return redirect(url_for("index"))
-    return render_template("index.html")
+    return render_template("spongebob.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
