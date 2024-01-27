@@ -15,7 +15,7 @@ soup = BeautifulSoup(response.content, 'html.parser')
 season_links = soup.find_all('a', href=True, string=lambda t: t and 'Season' in t)
 
 # Create a list of character names
-characters = ["SpongeBob", "Patrick", "Sandy", "Mr. Krabs", "Gary"]
+characters = ["SpongeBob", "Patrick", "Sandy", "Mr. Krabs", "Squidward"]
 
 # Create a dictionary of jsonlines.Writer for each character
 writers = {character: jsonlines.open(f'{character}.jsonl', mode='w') for character in characters}
