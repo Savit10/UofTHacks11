@@ -1,19 +1,24 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 
 # Flask constructor
-app = Flask(__name__)   
- 
+app = Flask(__name__, template_folder="templates")   
 # A decorator used to tell the application
 # which URL is associated function
+
+output = [{"input": "Sample input", "output": "Sample output"}]
+
+@app.route("/")
+
+def index():
+    return render_template("index.html", output=output)
+        
 @app.route('/', methods =["GET", "POST"])
-def gfg():
+def newinputoutput():
     if request.method == "POST":
-       # getting input with name = fname in HTML form
-       first_name = request.form.get("fname")
-       # getting input with name = lname in HTML form 
-       last_name = request.form.get("lname") 
-       return "Your name is "+first_name + last_name
-    return render_template("form.html")
- 
-if __name__=='__main__':
-   app.run()
+       input = request.form.get("user-input") 
+       output.append(input, input)
+       return redirect(url_for("index"))
+    return render_template("index.html")
+
+if __name__ == '__main__':
+    app.run(debug=True)
