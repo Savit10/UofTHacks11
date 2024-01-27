@@ -19,7 +19,10 @@ season_links = soup.find_all('a', href=True, string=lambda t: t and 'Season' in 
 characters = ["SpongeBob", "Patrick", "Sandy", "Mr. Krabs", "Squidward"]
 
 # Create a dictionary of jsonlines.Writer for each character
-writers = {character: jsonlines.open(f'{character}.jsonl', mode='w') for character in characters}
+writers = {character: jsonlines.open(f'{character}CHATBOT.jsonl', mode='w') for character in characters}
+
+# Initialize a dictionary to store the messages for each character
+character_messages = {name: [] for name in characters}
 
 # For each season
 for season_link in season_links:
@@ -51,13 +54,11 @@ for season_link in season_links:
                     # Find all the <p> tags after the dialogue tag within the main content
                     dialogues = dialogue_tag.find_all_next('p')
                     
-                    previous_name = ""
                     previous_dialogue = ""
 
-                    # Initialize a dictionary to store the messages for each character
-                    character_messages = {name: [] for name in characters}
-
                     # Extract the text from each <p> tag and write it to the .jsonl file
+                    # For each dialogue
+                    # For each dialogue
                     for dialogue in dialogues:
                         dialogue_text = dialogue.get_text(strip=True)
                         if dialogue_text:
@@ -65,27 +66,30 @@ for season_link in season_links:
                             if name in characters:
                                 # Create a dictionary for the user message
                                 user_message = {
-                                    "role": "user",
+                                    "role": "User",
                                     "content": previous_dialogue
                                 }
 
                                 # Create a dictionary for the chatbot message
                                 chatbot_message = {
-                                    "role": "chatbot",
+                                    "role": "Chatbot",
                                     "content": dialogue_speech
                                 }
 
-                                # Append the messages to the character's list
-                                character_messages[name].extend([user_message, chatbot_message])
+                                # Create a pair of messages
+                                message_pair = [user_message, chatbot_message]
 
-                                # Update the previous name and dialogue
-                                previous_name = name
+                                # Only append the pair to the character's list if it's not already there
+                                if message_pair not in character_messages[name]:
+                                    character_messages[name].append(message_pair)
+
+                                # Update the previous dialogue
                                 previous_dialogue = dialogue_speech
 
-# Write the messages to a .jsonl file for each character
-for name, messages in character_messages.items():
-    # Ensure that the character's messages array contains at least one message from the "User" and one from the "Chatbot"
-    if any(message["role"] == "user" for message in messages) and any(message["role"] == "chatbot" for message in messages):
-        # Open a jsonlines.Writer for the character in 'a' mode
-        with jsonlines.open(f'{name}.jsonl', mode='a') as writer:
-            writer.write({"messages": messages})
+                    # Write the messages to a .jsonl file for each character
+                    for name, messages in character_messages.items():
+                        # Open a jsonlines.Writer for the character in 'a' mode
+                        with jsonlines.open(f'{name}CHATBOT.jsonl', mode='a') as writer:
+                            # Write each pair of messages as a "messages" array in a JSON object
+                            for message_pair in messages:
+                                writer.write({"messages": message_pair})

@@ -52,40 +52,19 @@ for season_link in season_links:
                     
                     previous_dialogue = ""
 
-                    # Initialize a dictionary to store the messages for each character
-                    character_messages = {name: [] for name in characters}
-
                     # Extract the text from each <p> tag and write it to the .jsonl file
                     for dialogue in dialogues:
                         dialogue_text = dialogue.get_text(strip=True)
                         if dialogue_text:
                             name, _, dialogue_speech = dialogue_text.partition(':')
                             if name in characters:
-                                # Create a dictionary for the user message
-                                user_message = {
-                                    "role": "user",
-                                    "content": previous_dialogue
-                                }
-
-                                # Create a dictionary for the chatbot message
-                                chatbot_message = {
-                                    "role": "chatbot",
-                                    "content": dialogue_speech
-                                }
-
-                                # Append the messages to the character's list
-                                character_messages[name].extend([user_message, chatbot_message])
-
+                                # Add the previous dialogue and the colon to the prompt
+                                writers[name].write({"prompt": f"{previous_dialogue} {name}:", "completion": dialogue_speech})
                                 # Update the previous dialogue
                                 previous_dialogue = dialogue_speech
                         else:
                             break
 
-                    # Write the messages to a .jsonl file for each character
-                    for name, messages in character_messages.items():
-                        # Convert the list of dictionaries to a JSON string
-                        json_string = json.dumps({"messages": messages})
-
-                        # Write the JSON string to a .jsonl file
-                        with open(f'{name}.jsonl', 'w') as f:
-                            f.write(json_string)
+# Close the jsonlines.Writer for each character
+for writer in writers.values():
+    writer.close()
