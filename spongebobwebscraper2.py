@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import json
 import jsonlines
 
 # Define the base URL
@@ -50,6 +51,7 @@ for season_link in season_links:
                     # Find all the <p> tags after the dialogue tag within the main content
                     dialogues = dialogue_tag.find_all_next('p')
                     
+                    previous_name = ""
                     previous_dialogue = ""
 
                     # Initialize a dictionary to store the messages for each character
@@ -76,16 +78,14 @@ for season_link in season_links:
                                 # Append the messages to the character's list
                                 character_messages[name].extend([user_message, chatbot_message])
 
-                                # Update the previous dialogue
+                                # Update the previous name and dialogue
+                                previous_name = name
                                 previous_dialogue = dialogue_speech
-                        else:
-                            break
 
-                    # Write the messages to a .jsonl file for each character
-                    for name, messages in character_messages.items():
-                        # Convert the list of dictionaries to a JSON string
-                        json_string = json.dumps({"messages": messages})
-
-                        # Write the JSON string to a .jsonl file
-                        with open(f'{name}.jsonl', 'w') as f:
-                            f.write(json_string)
+# Write the messages to a .jsonl file for each character
+for name, messages in character_messages.items():
+    # Ensure that the character's messages array contains at least one message from the "User" and one from the "Chatbot"
+    if any(message["role"] == "user" for message in messages) and any(message["role"] == "chatbot" for message in messages):
+        # Open a jsonlines.Writer for the character in 'a' mode
+        with jsonlines.open(f'{name}.jsonl', mode='a') as writer:
+            writer.write({"messages": messages})
