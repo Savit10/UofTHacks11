@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for
 from cohereaifile import get_response
+from ElevenLabsSpeaking import speak
 # Flask constructor
 app = Flask(__name__, template_folder="templates")  
 # A decorator used to tell the application
@@ -20,6 +21,7 @@ def spongebob():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "SpongeBob")
+        speak(screenOutput, "SpongeBob")
         outputSpongebob.append({"input": input, "screenOutput": screenOutput})
         return render_template('spongebob.html', output=outputSpongebob)
     return render_template('spongebob.html')
@@ -29,6 +31,7 @@ def sandy():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "Sandy")
+        speak(screenOutput, "Sandy")
         outputSandy.append({"input": input, "screenOutput": screenOutput})
         return render_template('sandy.html', output=outputSandy)
     return render_template('sandy.html')
@@ -37,6 +40,7 @@ def sandy():
 def patricks():
     if request.method == "POST":
         input = request.form.get("user-input")
+        speak(screenOutput, "Patrick") 
         screenOutput = get_response(input, "Patrick")
         outputPatrick.append({"input": input, "screenOutput": screenOutput})
         return render_template('patricks.html', output=outputPatrick)
