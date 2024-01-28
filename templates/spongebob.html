@@ -59,6 +59,9 @@
                 <p>User input: {{ item.input }}</p>
                 <p>Response: {{ item.screenOutput }}</p>
                 {% endfor %}
+                <audio controls>
+                    <source src="{{ url_for('static', filename='output.mp3') }}" type="audio/mpeg">
+                </audio>
             </div>
         </div>
     </main>
