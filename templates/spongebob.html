@@ -60,7 +60,8 @@
                 <p>Response: {{ item.screenOutput }}</p>
                 {% endfor %}
                 <audio controls>
-                    <source src="{{ url_for('static', filename='output.mp3') }}" type="audio/mpeg">
+                    <source id="player" src="{{ url_for('static', filename='output.mp3') }}?cb={{ currentTime }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
                 </audio>
             </div>
         </div>

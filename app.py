@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, redirect, url_for
 from cohereaifile import get_response
 from ElevenLabsSpeaking import speak
+import time
 # Flask constructor
 app = Flask(__name__, template_folder="templates")  
 # A decorator used to tell the application
@@ -24,9 +25,9 @@ def spongebob():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "SpongeBob")
-        speak(screenOutput, "SpongeBob")
+        audioFile = speak(screenOutput, "SpongeBob")
         outputSpongebob.append({"input": input, "screenOutput": screenOutput})
-        return render_template('spongebob.html', output=outputSpongebob)
+        return render_template('spongebob.html', output=outputSpongebob, audioFile=audioFile)
     return render_template('spongebob.html')
 
 @app.route('/sandy', methods=["GET", "POST"])
@@ -34,9 +35,9 @@ def sandy():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "Sandy")
-        speak(screenOutput, "Sandy")
+        audioFile = speak(screenOutput, "Sandy")
         outputSandy.append({"input": input, "screenOutput": screenOutput})
-        return render_template('sandy.html', output=outputSandy)
+        return render_template('sandy.html', output=outputSandy, audioFile=audioFile, currentTime=time.time())
     return render_template('sandy.html')
 
 @app.route('/patricks', methods=["GET", "POST"])
@@ -44,9 +45,9 @@ def patricks():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "Patrick")
-        speak(screenOutput, "Patrick") 
+        audioFile = speak(screenOutput, "Patrick") 
         outputPatrick.append({"input": input, "screenOutput": screenOutput})
-        return render_template('patricks.html', output=outputPatrick)
+        return render_template('patricks.html', output=outputPatrick, audioFile=audioFile)
     return render_template('patricks.html')
 
 @app.route('/thomas', methods=["GET", "POST"])

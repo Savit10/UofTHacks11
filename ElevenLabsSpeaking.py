@@ -22,7 +22,7 @@ def speak(text: str, character: str) -> None:
     voice=voice,
     model="eleven_multilingual_v2"
     )
-    filename = 'output.mp3'
+    filename = 'static/output.mp3'
     with open(filename, 'wb') as f:
         f.write(audio)
     return filename
