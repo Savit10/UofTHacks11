@@ -16,8 +16,8 @@ def index():
 def spongebob():
     if request.method == "POST":
         input = request.form.get("user-input")
-        screenOutput = get_response(input)
-        output.append({input, screenOutput})
+        screenOutput = get_response(input, "SpongeBob")
+        output.append({"input": input, "screenOutput": screenOutput})
         return render_template('spongebob.html', output=output)
     return render_template('spongebob.html')
 
@@ -25,8 +25,8 @@ def spongebob():
 def sandy():
     if request.method == "POST":
         input = request.form.get("user-input")
-        screenOutput = get_response(input)
-        output.append({input, screenOutput})
+        screenOutput = get_response(input, "Sandy")
+        output.append({"input": input, "screenOutput": screenOutput})
         return render_template('sandy.html', output=output)
     return render_template('sandy.html')
 
@@ -34,8 +34,8 @@ def sandy():
 def patricks():
     if request.method == "POST":
         input = request.form.get("user-input")
-        screenOutput = get_response(input)
-        output.append({input, screenOutput})
+        screenOutput = get_response(input, "Patrick")
+        output.append({"input": input, "screenOutput": screenOutput})
         return render_template('patricks.html', output=output)
     return render_template('patricks.html')
         

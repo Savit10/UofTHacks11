@@ -22,10 +22,15 @@
                     <div class="agent-text"></div>
                     <p> Agent <soan>(Online)</soan></p>
             </div>
-            <form class="'input-form">
-                <label for="user-input">Enter your question here: </label><input type="text" id="user-input" name="user-input"><br>
+            <form class="input-form" method="POST" action="{{ url_for('sandy') }}"> 
+                <label for="user-input">Enter your question here: </label>
+                <input type="text" id="user-input" name="user-input"><br>
+                <input type="submit" value="Submit">
             </form>
-            {% if output %} <p>{{ output }}</p> {% endif %}
+            {% for item in output %}
+                <p>User input: {{ item.input }}</p>
+                <p>Response: {{ item.screenOutput }}</p>
+            {% endfor %}
         </div>
     </main>
 </body>
