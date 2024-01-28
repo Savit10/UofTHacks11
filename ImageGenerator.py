@@ -8,7 +8,7 @@ def generate_image(prompt):
     # s3 = S3Connection(os.environ['OPEN_AI_TOKEN'])
     # client = OpenAI(api_key=s3)
     # client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-    client = OpenAI(api_key=os.environ.get('THEANSWERTOEVERYTHINGEVER'))
+    client = OpenAI(api_key=os.getenv("OPEN_AI_TOKEN"))
     response = client.images.generate(
         prompt=prompt,
         size="1024x1024",
