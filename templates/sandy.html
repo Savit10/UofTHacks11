@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head> -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +15,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='../static/assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="sandy-body">
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('spongebob')}}">Spongebob</a>
@@ -37,10 +31,10 @@
                     <div class="agent-text"></div>
                     <p><soan>(Online)</soan></p>
             </div>
-            <form class="input-form" method="POST" action="{{ url_for('patricks') }}"> 
+            <form class="input-form" method="POST" action="{{ url_for('sandy') }}"> 
                 <label for="user-input">Enter your question here: </label>
                 <input type="text" id="user-input" name="user-input">
-                <input type="submit" value="Submit">
+                <input class = "submit" type="submit" value="Submit">
             </form>
             {% for item in output %}
                 <p>User input: {{ item.input }}</p>

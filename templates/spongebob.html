@@ -20,8 +20,17 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='../static/assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style> body {
+        background: repeating-linear-gradient(
+            45deg,
+            yellow,
+            yellow 10px,
+            white 10px,
+            white 20px
+        );
+    }</style>
 </head>
-<body>
+<body class-="spongebob-body">
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('spongebob')}}">Spongebob</a>
@@ -37,15 +46,17 @@
                     <div class="agent-text"></div>
                     <p> <soan>(Online)</soan></p>
             </div>
+            <div class = "form-div">
             <form class="input-form" method="POST" action="{{ url_for('spongebob') }}"> 
                 <label for="user-input">Enter your question here: </label>
                 <input type="text" id="user-input" name="user-input">
-                <input type="submit" value="Submit">
+                <input class = "submit" type="submit" value="Submit">
             </form>
                 {% for item in output %}
                 <p>User input: {{ item.input }}</p>
                 <p>Response: {{ item.screenOutput }}</p>
                 {% endfor %}
+            </div>
         </div>
     </main>
 </body>

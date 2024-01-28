@@ -24,8 +24,22 @@ nav a:hover {
     color: black;
 } 
 
-body {
-    background-color: #0f0f20;
+.spongebob-body {
+    background-color: yellow;
+}
+
+.sandy-body {
+    background-color: white;
+}
+
+.patricks-body {
+    background: repeating-linear-gradient(
+        45deg,
+        #ea9999,
+        #ea9999 10px,
+        #97de69 10px,
+        #97de69 20px
+    );
 }
 
 .main-div {
@@ -36,10 +50,11 @@ body {
 }
 
 .container {
-     height: 550px;
-     width: 390px;
+     height: 80vh;
+     width: 60vw;
      border: 3px solid rgba(255,255,255,.5);
      border-radius: 20px;
+     background-color: #0f0f20;
 }
 
 .container .top-part {
@@ -99,8 +114,8 @@ body {
 }
 .spongebob-img {
     height: 150px;
+    margin: 15px;
 }
-
 .spongebob-button-text {
     color: #0f0f20;
 }
@@ -113,10 +128,6 @@ body {
     margin-left: 150px;
 }
 
-.input-form {
-    color: #0f0f20;
-}
-
 .user-input {
     color: #0f0f20;
 }
@@ -126,7 +137,26 @@ body {
 }
 
 .submit {
-    margin-left: 150px;
-    margin-top: 50px;
     color: #0f0f20;
+    background-color: white;
+    padding: 5px;
+}
+
+#user-input {
+    border-color: black;
+    border-radius: 3px;
+    padding-right: 100px; 
+    padding-left: 100px;  
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.container .top-part img{
+    height: 70px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+label {
+    font-size: 20px;
 }
