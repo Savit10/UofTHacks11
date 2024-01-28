@@ -13,6 +13,14 @@ def get_response(input: str, character: str) -> str:
         model_id = "526e408f-956e-4bfe-a816-2800d92d80e3-ft"
     elif character == "Squidward":
         model_id = "ee274ad6-85c1-4b65-9317-8dde7e27c1bd-ft"
+    elif character == 'Thomas':
+        model_id = "e8c5e1d6-3f9c-46fc-86e1-b33b006ff581-ft"
+    elif character == "Gordon":
+        model_id = "0d150ba3-ce02-46e9-ad9d-59c458dc3fc3-ft"
+    elif character == "Edward":
+        model_id = "91d7a719-c332-4f8e-95ee-a03e19359dc0-ft"
+    elif character == "Duncan":
+        model_id = "7b8138f7-208d-438e-93d1-691255abfeda-ft"
     else:
         model_id = 'command'
     for i in range(2):
