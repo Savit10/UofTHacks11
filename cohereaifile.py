@@ -15,7 +15,7 @@ def get_response(input: str, character: str) -> str:
         model_id == "ee274ad6-85c1-4b65-9317-8dde7e27c1bd-ft"
     else:
         model_id = 'command'
-    for i in range(4):
+    for i in range(2):
         response = co.generate(
         model=model_id,
         prompt= input + character + ":",
