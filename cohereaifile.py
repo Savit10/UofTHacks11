@@ -1,5 +1,8 @@
 import cohere 
-co = cohere.Client('9YRZ6zTRjsQc7OyNaUaYde0f8PIBqI2kKQmTkvlz')
+import random
+tokens = ['9YRZ6zTRjsQc7OyNaUaYde0f8PIBqI2kKQmTkvlz', 'iTTNFrBwZ3kitjhy3S3dGVzP3r1BW4zIOxFAwmnx', 'ZWGCwnkKyeB767zTSOyV1tvZO0ETSY6zXMKObIDF', \
+          'mWTKUlGW1wIRKiRqoqffVplLeabGNQp5F9noM7fE', 'IPgc2SG4j6Nm0pYg0K7PYZjQ6VNG8Twmffz5pLur']
+# co = cohere.Client('9YRZ6zTRjsQc7OyNaUaYde0f8PIBqI2kKQmTkvlz')
 
 def get_response(input: str, character: str) -> str:    
     responses = []
@@ -23,6 +26,7 @@ def get_response(input: str, character: str) -> str:
         model_id = "7b8138f7-208d-438e-93d1-691255abfeda-ft"
     else:
         model_id = 'command'
+    co = cohere.Client(tokens[random.randint(0, 4)])
     for i in range(2):
         response = co.generate(
         model=model_id,
