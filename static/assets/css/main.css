@@ -124,6 +124,7 @@ body.light-theme{
 .logo{
     font-size: var(--font-size-md);
     color: var(--light-color);
+    margin-left: 20px;
 }
 
 .menu{
@@ -593,6 +594,7 @@ body.light-theme{
 /* Footer */
 .footer{
     background-color: var(--secondary-background-color);
+
 }
 
 .footer-container{
@@ -608,6 +610,7 @@ body.light-theme{
 .company-description{
     margin-block: var(--margin-sm);
     max-width: 75%;
+    margin-left: 20px;
 }
 
 .social-media{
@@ -895,4 +898,8 @@ body.light-theme{
         grid-row: 2/-1;
     }
 
+}
+
+h4 {
+    margin-left: 20px;
 }
