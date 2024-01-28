@@ -73,7 +73,6 @@ pysound==0.2
 pytest==7.4.4
 python-dateutil==2.8.2
 python-dotenv==1.0.1
-python-ta==2.7.0
 PyYAML==6.0.1
 requests==2.31.0
 rsa==4.7.2
