@@ -1,13 +1,13 @@
 from openai import OpenAI
-# from boto.s3.connection import S3Connection
+from boto.s3.connection import S3Connection
 import os
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
 def generate_image(prompt):
-    # s3 = S3Connection(os.environ['OPEN_AI_TOKEN'])
-    # client = OpenAI(api_key=s3)
-    client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
+    s3 = S3Connection(os.environ['OPEN_AI_TOKEN'])
+    client = OpenAI(api_key=s3)
+    # client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
     response = client.images.generate(
         prompt=prompt,
         size="1024x1024",
