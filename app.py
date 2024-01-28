@@ -3,7 +3,8 @@ from cohereaifile import get_response
 from ElevenLabsSpeaking import speak
 import time
 # Flask constructor
-app = Flask(__name__, template_folder="templates")  
+app = Flask(__name__, template_folder="templates") 
+app.config['TEMPLATES_AUTO_RELOAD'] = True 
 # A decorator used to tell the application
 # which URL is associated function
 
@@ -25,9 +26,8 @@ def spongebob():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "SpongeBob")
-        audioFile = speak(screenOutput, "SpongeBob")
         outputSpongebob.append({"input": input, "screenOutput": screenOutput})
-        return render_template('spongebob.html', output=outputSpongebob, audioFile=audioFile)
+        return render_template('spongebob.html', output=outputSpongebob)
     return render_template('spongebob.html')
 
 @app.route('/sandy', methods=["GET", "POST"])
@@ -76,6 +76,13 @@ def edward():
         outputEdward.append({"input": input, "screenOutput": screenOutput})
         return render_template('edward.html', output=outputEdward)
     return render_template('edward.html')
+
+@app.route('/get_audio', methods=["GET", "POST"])
+def get_audio():
+    text = request.args.get("text")
+    character = request.args.get("character")
+    return speak(text=text, character=character)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

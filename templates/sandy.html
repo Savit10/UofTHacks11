@@ -43,10 +43,12 @@
                 <p>User input: {{ item.input }}</p>
                 <p>Response: {{ item.screenOutput }}</p>
             {% endfor %}
-            <audio controls>
-                <source id="player" src="{{ url_for('static', filename='output.mp3') }}?cb={{ currentTime }}" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
+            {% if output %}
+                <audio controls autoplay>
+                    <source id="player" src="{{ url_for('get_audio') }}?text={{ output[-1].screenOutput }}&character=Sandy" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            {% endif %}
         </div>
     </main>
 </body>
