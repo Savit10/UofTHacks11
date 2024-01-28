@@ -22,7 +22,8 @@ def speak(text: str, character: str) -> None:
     voice=voice,
     model="eleven_multilingual_v2"
     )
-    play(audio)
+    with open('output.mp3', 'wb') as f:
+        f.write(audio)
 
 if __name__ == '__main__':
     speak("My name is Sandy! I love krabby patties", "Sandy")
