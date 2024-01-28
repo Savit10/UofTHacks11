@@ -8,11 +8,11 @@ def get_response(input: str, character: str) -> str:
     elif character == "Patrick":
         model_id = "3bfcb339-f835-4dea-aed9-3b76cb6f16b6-ft"
     elif character == "Sandy":
-        model_id == "25d29448-d950-4502-ac62-7aa34ba13a71-ft"
+        model_id = "25d29448-d950-4502-ac62-7aa34ba13a71-ft"
     elif character == "Mr. Krabs":
-        model_id == "526e408f-956e-4bfe-a816-2800d92d80e3-ft"
+        model_id = "526e408f-956e-4bfe-a816-2800d92d80e3-ft"
     elif character == "Squidward":
-        model_id == "ee274ad6-85c1-4b65-9317-8dde7e27c1bd-ft"
+        model_id = "ee274ad6-85c1-4b65-9317-8dde7e27c1bd-ft"
     else:
         model_id = 'command'
     for i in range(2):
