@@ -12,11 +12,9 @@ def speak(text: str, character: str) -> None:
     elif character == "Patrick":
         voice = "jDEVTjwk5XW2gm84tEAd"
     elif character == "Sandy":
-        voice = ""
-    elif character == "Mr. Krabs":
-        voice = ""
+        voice = "7i5y26JQ0Y4qZgvkx9jh"
     elif character == "Squidward":
-        voice = ""
+        voice = "TW2H6YkkPD06FDvFL2KZ"
     else:
         voice = "Bella"
     audio = generate(
@@ -27,7 +25,7 @@ def speak(text: str, character: str) -> None:
     play(audio)
 
 if __name__ == '__main__':
-    speak("My name is Patrick! I love krabby patties", "Patrick")
+    speak("My name is Sandy! I love krabby patties", "Sandy")
 
 # audio = generate(
 #   text="My name is patrick! I love krabby patties",
