@@ -1,3 +1,4 @@
+import get_response
 <!DOCTYPE html>
 <html lang="en">
 <!-- <head>
@@ -22,6 +23,30 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <script>
+        // Check if there's any stored output
+        var outputSpongebob = JSON.parse(localStorage.getItem('outputSpongebob')) || [];
+
+        // Display the stored output
+        outputSpongebob.forEach(function(output) {
+            // Replace this with your own code to display the output
+            console.log(output);
+        });
+
+        // When the form is submitted, store the new output
+        document.querySelector('form').addEventListener('submit', function(event) {
+            var input = document.querySelector('input[name="user-input"]').value;
+            var screenOutput = get_response(input, "SpongeBob");  // You'll need to implement this function
+
+            outputSpongebob.push({ input: input, screenOutput: screenOutput });
+            localStorage.setItem('outputSpongebob', JSON.stringify(outputSpongebob));
+        });
+
+        // When the user leaves the page, clear the stored output
+        window.onbeforeunload = function() {
+            localStorage.removeItem('outputSpongebob');
+        };
+    </script>
     <nav>
         <a href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('spongebob')}}">Spongebob</a>
