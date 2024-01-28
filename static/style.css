@@ -124,3 +124,9 @@ body {
 #user-input {
     color: #0f0f20;
 }
+
+.submit {
+    margin-left: 150px;
+    margin-top: 50px;
+    color: #0f0f20;
+}

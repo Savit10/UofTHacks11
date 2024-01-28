@@ -5,7 +5,10 @@ app = Flask(__name__, template_folder="templates")
 # A decorator used to tell the application
 # which URL is associated function
 
-output = [{"input": "Sample input", "output": "Sample output"}]
+outputSpongebob = []
+outputSandy = []
+outputPatrick = []
+output = []
 
 @app.route("/")
 
@@ -17,8 +20,8 @@ def spongebob():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "SpongeBob")
-        output.append({"input": input, "screenOutput": screenOutput})
-        return render_template('spongebob.html', output=output)
+        outputSpongebob.append({"input": input, "screenOutput": screenOutput})
+        return render_template('spongebob.html', output=outputSpongebob)
     return render_template('spongebob.html')
 
 @app.route('/sandy', methods=["GET", "POST"])
@@ -26,8 +29,8 @@ def sandy():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "Sandy")
-        output.append({"input": input, "screenOutput": screenOutput})
-        return render_template('sandy.html', output=output)
+        outputSandy.append({"input": input, "screenOutput": screenOutput})
+        return render_template('sandy.html', output=outputSandy)
     return render_template('sandy.html')
 
 @app.route('/patricks', methods=["GET", "POST"])
@@ -35,17 +38,9 @@ def patricks():
     if request.method == "POST":
         input = request.form.get("user-input")
         screenOutput = get_response(input, "Patrick")
-        output.append({"input": input, "screenOutput": screenOutput})
-        return render_template('patricks.html', output=output)
+        outputPatrick.append({"input": input, "screenOutput": screenOutput})
+        return render_template('patricks.html', output=outputPatrick)
     return render_template('patricks.html')
-        
-@app.route('/', methods =["GET", "POST"])
-def newinputoutput():
-    if request.method == "POST":
-       input = request.form.get("user-input") 
-       output.append(input, input)
-       return redirect(url_for("index"))
-    return render_template("spongebob.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
