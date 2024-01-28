@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head> -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartoon Talk</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon.png">
+    <!-- Remix icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" >
+    <!-- Swiper.js styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/assets/css/swiper-bundle.min.css') }}">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style> body {
+        background: repeating-linear-gradient(
+            45deg,
+            blue,
+            blue 10px,
+            white 10px,
+            white 20px
+        );
+    }</style>
+</head>
+<body class-="spongebob-body">
+    <nav>
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('spongebob')}}">Spongebob</a>
+        <a href="{{ url_for('sandy')}}">Sandy</a>
+        <a href="{{ url_for('patricks')}}">Patricks</a>
+        <a href="{{ url_for('thomas')}}">Thomas</a>
+        <a href="{{ url_for('gordon')}}">Gordon</a>
+        <a href="{{ url_for('edward')}}">Edward</a>
+      </nav>
+    <main>
+        <div class="main-div">
+            <div class="container">
+                <div class="top-part">
+                    <img class = "spongebob-img" src = "{{ url_for('static', filename='gordon.jpg') }}">
+                    <h3>Gordon</h3>
+                    <div class="agent-text"></div>
+                    <p> <soan>(Online)</soan></p>
+            </div>
+            <div class = "form-div">
+            <form class="input-form" method="POST" action="{{ url_for('gordon') }}"> 
+                <label for="user-input">Enter your question here: </label>
+                <input type="text" id="user-input" name="user-input" size="50">
+                <input class = "submit" type="submit" value="Submit">
+            </form>
+                {% for item in output %}
+                <p>User input: {{ item.input }}</p>
+                <p>Response: {{ item.screenOutput }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+</html>

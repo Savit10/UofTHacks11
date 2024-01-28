@@ -36,6 +36,9 @@
         <a href="{{ url_for('spongebob')}}">Spongebob</a>
         <a href="{{ url_for('sandy')}}">Sandy</a>
         <a href="{{ url_for('patricks')}}">Patricks</a>
+        <a href="{{ url_for('thomas')}}">Thomas</a>
+        <a href="{{ url_for('gordon')}}">Gordon</a>
+        <a href="{{ url_for('edward')}}">Edward</a>
       </nav>
     <main>
         <div class="main-div">
@@ -49,7 +52,7 @@
             <div class = "form-div">
             <form class="input-form" method="POST" action="{{ url_for('spongebob') }}"> 
                 <label for="user-input">Enter your question here: </label>
-                <input type="text" id="user-input" name="user-input">
+                <input type="text" id="user-input" name="user-input" size="50">
                 <input class = "submit" type="submit" value="Submit">
             </form>
                 {% for item in output %}

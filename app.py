@@ -9,6 +9,9 @@ app = Flask(__name__, template_folder="templates")
 outputSpongebob = []
 outputSandy = []
 outputPatrick = []
+outputThomas = []
+outputGordon = []
+outputEdward = []
 output = []
 
 @app.route("/")
@@ -40,12 +43,38 @@ def sandy():
 def patricks():
     if request.method == "POST":
         input = request.form.get("user-input")
-        speak(screenOutput, "Patrick") 
         screenOutput = get_response(input, "Patrick")
+        speak(screenOutput, "Patrick") 
         outputPatrick.append({"input": input, "screenOutput": screenOutput})
         return render_template('patricks.html', output=outputPatrick)
     return render_template('patricks.html')
 
+@app.route('/thomas', methods=["GET", "POST"])
+def thomas():
+    if request.method == "POST":
+        input = request.form.get("user-input")
+        screenOutput = get_response(input, "Thomas")
+        outputThomas.append({"input": input, "screenOutput": screenOutput})
+        return render_template('thomas.html', output=outputThomas)
+    return render_template('thomas.html')
+
+@app.route('/gordon', methods=["GET", "POST"])
+def gordon():
+    if request.method == "POST":
+        input = request.form.get("user-input")
+        screenOutput = get_response(input, "Gordon")
+        outputGordon.append({"input": input, "screenOutput": screenOutput})
+        return render_template('gordon.html', output=outputGordon)
+    return render_template('gordon.html')
+
+@app.route('/edward', methods=["GET", "POST"])
+def edward():
+    if request.method == "POST":
+        input = request.form.get("user-input")
+        screenOutput = get_response(input, "Edward")
+        outputEdward.append({"input": input, "screenOutput": screenOutput})
+        return render_template('edward.html', output=outputEdward)
+    return render_template('edward.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
-

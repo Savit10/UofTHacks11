@@ -134,6 +134,7 @@ nav a:hover {
 
 #user-input {
     color: #0f0f20;
+    padding-left: 5px;
 }
 
 .submit {
@@ -145,8 +146,7 @@ nav a:hover {
 #user-input {
     border-color: black;
     border-radius: 3px;
-    padding-right: 100px; 
-    padding-left: 100px;  
+    size: 20px; 
     padding-top: 5px;
     padding-bottom: 5px;
 }

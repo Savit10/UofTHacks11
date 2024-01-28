@@ -35,6 +35,15 @@
                     <li class="list-item">
                         <a href="{{ url_for('patricks') }}" class="list-link">Patricks</a>
                     </li>
+                    <li class="list-item">
+                        <a href="{{ url_for('thomas') }}" class="list-link">Thomas</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="{{ url_for('gordon') }}" class="list-link">Gordon</a>
+                    </li>
+                    <li class="list-item">
+                        <a href="{{ url_for('edward') }}" class="list-link">Edward</a>
+                    </li>
                 </ul>
             </div>
                 <div class="icon-box place-items-center" id="search-icon"></div>
@@ -83,7 +92,7 @@
             </div>
             <div class="sidebar d-grid">
                 <h3 class="title featured-content-title">Thomas and Friends</h3>
-                <a href="./gravityvslight.html" class="trending-news-box">
+                <a href="{{ url_for('thomas') }}" class="trending-news-box">
                     <div class="trending-news-img-box">
                         <span class="trending-number place-items-center">01</span>
                         <img src="{{ url_for('static', filename='thomas.jpg') }}" class="article-image">
@@ -92,7 +101,7 @@
                         <h3 class="title article-title">Talk to Thomas!</h3>
                     </div>
                 </a>
-                <a href="./blackholes.html" class="trending-news-box">
+                <a href="{{ url_for('gordon') }}" class="trending-news-box">
                     <div class="trending-news-img-box">
                         <span class="trending-number place-items-center">02</span>
                         <img src="{{ url_for('static', filename='gordon.jpg') }}" alt="" class="article-image">
@@ -101,7 +110,7 @@
                         <h3 class="title article-title">Talk to Gordon!</h3>
                     </div>
                 </a>
-                <a href="./relativityvsmechanics.html" class="trending-news-box">
+                <a href="{{ url_for('edward') }}" class="trending-news-box">
                     <div class="trending-news-img-box">
                         <span class="trending-number place-items-center">03</span>
                         <img src="{{ url_for('static', filename='edward.jpg') }}" alt="" class="article-image">
