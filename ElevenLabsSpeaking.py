@@ -1,6 +1,7 @@
 from elevenlabs import clone, generate, play, set_api_key
 import elevenlabs
-set_api_key("d630c7244416e787e8e3525776b914c5")
+import os
+set_api_key(os.getenv("elevenlabstoken"))
 
 # voices = elevenlabs.voices()
 # for voice in voices:

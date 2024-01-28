@@ -1,7 +1,8 @@
 import cohere 
 import random
-tokens = ['9YRZ6zTRjsQc7OyNaUaYde0f8PIBqI2kKQmTkvlz', 'iTTNFrBwZ3kitjhy3S3dGVzP3r1BW4zIOxFAwmnx', 'ZWGCwnkKyeB767zTSOyV1tvZO0ETSY6zXMKObIDF', \
-          'mWTKUlGW1wIRKiRqoqffVplLeabGNQp5F9noM7fE', 'IPgc2SG4j6Nm0pYg0K7PYZjQ6VNG8Twmffz5pLur']
+import os
+tokens = [os.getenv("cohereai1"), os.getenv("cohereai2"), os.getenv('cohereai3'), \
+          os.getenv('cohereai4'), os.getenv('cohereai5')]
 # co = cohere.Client('9YRZ6zTRjsQc7OyNaUaYde0f8PIBqI2kKQmTkvlz')
 
 def get_response(input: str, character: str) -> str:    
