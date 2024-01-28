@@ -49,6 +49,9 @@
                     Your browser does not support the audio element.
                 </audio>
             {% endif %}
+            {% if image_url %}
+            <img src="{{image_url}}" style="width: 200px;">
+            {% endif %}
         </div>
     </main>
 </body>
