@@ -20,7 +20,7 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 @app.route("/")
 
 def index():
-    return render_template("index.html", output=output)
+    return render_template("index.html", output="")
 
 @app.route('/spongebob', methods=["GET", "POST"])
 def spongebob():
