@@ -9,12 +9,11 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 # A decorator used to tell the application
 # which URL is associated function
 
-# outputSpongebob = []
-# outputSandy = []
-# outputPatrick = []
-# outputThomas = []
-# outputGordon = []
-# outputEdward = []
+# 
+# 
+# 
+# 
+# 
 # output = []
 
 @app.route("/")
@@ -25,86 +24,92 @@ def index():
 @app.route('/spongebob', methods=["GET", "POST"])
 def spongebob():
     if request.method == "POST":
+        outputSpongebob = []
         input = request.form.get("user-input")
         if 'draw' in input:
             image_url = generate_image(input + " SpongeBob from SpongeBob SquarePants")
-            # outputSpongebob.append({"image_url": image_url})
+            outputSpongebob.append({"image_url": image_url})
         else:
             image_url = ""
         screenOutput = get_response(input, "SpongeBob")
-        # outputSpongebob.append({"input": input, "screenOutput": screenOutput})
-        return render_template('spongebob.html', output=screenOutput, image_url=image_url) #edited
+        outputSpongebob.append({"input": input, "screenOutput": screenOutput})
+        return render_template('spongebob.html', output=outputSpongebob, image_url=image_url)
     return render_template('spongebob.html')
 
 @app.route('/sandy', methods=["GET", "POST"])
 def sandy():
     if request.method == "POST":
+        outputSandy = []
         input = request.form.get("user-input")
         if 'draw' in input:
             image_url = generate_image(input + " Sandy from SpongeBob SquarePants")
-            # outputSandy.append({"image_url": image_url})
+            outputSandy.append({"image_url": image_url})
         else:
             image_url = ""
         screenOutput = get_response(input, "Sandy")
         audioFile = speak(screenOutput, "Sandy")
-        # outputSandy.append({"input": input, "screenOutput": screenOutput})
-        return render_template('sandy.html', output=screenOutput, audioFile=audioFile, image_url=image_url) #edited
+        outputSandy.append({"input": input, "screenOutput": screenOutput})
+        return render_template('sandy.html', output=outputSandy, audioFile=audioFile, image_url=image_url) 
     return render_template('sandy.html')
 
 @app.route('/patricks', methods=["GET", "POST"])
 def patricks():
     if request.method == "POST":
+        outputPatrick = []
         image_url = ""
         input = request.form.get("user-input")
         if 'draw' in input:
             image_url = generate_image(input + " Patrick from SpongeBob SquarePants")
-            # outputPatrick.append({"image_url": image_url})
+            outputPatrick.append({"image_url": image_url})
         screenOutput = get_response(input, "Patrick")
         audioFile = speak(screenOutput, "Patrick") 
-        # outputPatrick.append({"input": input, "screenOutput": screenOutput})
-        return render_template('patricks.html', output=screenOutput, audioFile=audioFile, image_url=image_url) #edited
+        outputPatrick.append({"input": input, "screenOutput": screenOutput})
+        return render_template('patricks.html', output=outputPatrick, audioFile=audioFile, image_url=image_url) #edited
     return render_template('patricks.html')
 
 @app.route('/thomas', methods=["GET", "POST"])
 def thomas():
     if request.method == "POST":
+        outputThomas = []
         input = request.form.get("user-input")
         if 'draw' in input:
             image_url = generate_image(input + " Thomas the Tank Engine")
-            # outputThomas.append({"image_url": image_url})
+            outputThomas.append({"image_url": image_url})
         else:
             image_url = ""
         screenOutput = get_response(input, "Thomas")
-        # outputThomas.append({"input": input, "screenOutput": screenOutput})
-        return render_template('thomas.html', output=screenOutput, image_url=image_url) #edited
+        outputThomas.append({"input": input, "screenOutput": screenOutput})
+        return render_template('thomas.html', output=outputThomas, image_url=image_url) #edited
     return render_template('thomas.html')
 
 @app.route('/gordon', methods=["GET", "POST"])
 def gordon():
     if request.method == "POST":
+        outputGordon = []
         input = request.form.get("user-input")
         if 'draw' in input:
             image_url = generate_image(input + " Gordon from Thomas the Tank Engine")
-            # outputGordon.append({"image_url": image_url})
+            outputGordon.append({"image_url": image_url})
         else:
             image_url = ""
         screenOutput = get_response(input, "Gordon")
-        # outputGordon.append({"input": input, "screenOutput": screenOutput})
-        return render_template('gordon.html', output=screenOutput, image_url=image_url) #edited
+        outputGordon.append({"input": input, "screenOutput": screenOutput})
+        return render_template('gordon.html', output=outputGordon, image_url=image_url) #edited
     return render_template('gordon.html')
 
 @app.route('/edward', methods=["GET", "POST"])
 def edward():
     if request.method == "POST":
+        outputEdward = []
         input = request.form.get("user-input")
         if 'draw' in input:
             image_url = generate_image(input + " Edward from Thomas the Tank Engine")
-            # outputEdward.append({"image_url": image_url})
+            outputEdward.append({"image_url": image_url})
         else:
             image_url = ""  
         screenOutput = get_response(input, "Edward")
-        # outputEdward.append({"input": input, "screenOutput": screenOutput})
-        return render_template('edward.html', output=screenOutput, image_url=image_url) #edited
+        outputEdward.append({"input": input, "screenOutput": screenOutput})
+        return render_template('edward.html', output=outputEdward, image_url=image_url) #edited
     return render_template('edward.html')
 
 @app.route('/get_audio', methods=["GET", "POST"])
